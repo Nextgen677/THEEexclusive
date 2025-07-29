@@ -44,11 +44,22 @@
       background-color: rgba(0, 0, 0, 0.6);
       border-radius: 10px;
     }
-    #topicImage {
-      max-width: 600px;
-      margin-top: 1rem;
+    #gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      justify-content: center;
+      width: 100%;
+      max-width: 900px;
+    }
+    .topicImage {
+      max-width: 260px;
+      max-height: 180px;
       border-radius: 10px;
       box-shadow: 0 0 15px #00ffff;
+      background: #111;
+      margin-bottom: 0.5rem;
     }
     #clock {
       margin-top: 1rem;
@@ -103,14 +114,14 @@
     <option value="vr">Virtual & Augmented Reality</option>
     <option value="blockchain">Blockchain Technology</option>
     <option value="space">Space Exploration</option>
-    <option value="biotech">Biotechnology</option>
+    <option value="biotech">Biotech</option>
     <option value="privacy">Digital Identity & Privacy</option>
-    <option value="cyber">Cybersecurity & Ethical Hacking</option>
+    <option value="cyber">Cybersecurity</option>
     <option value="iot">Internet of Things (IoT)</option>
   </select>
 
   <div id="description"></div>
-  <img id="topicImage" style="display:none;" />
+  <div id="gallery"></div>
 
   <div id="clock"></div>
 
@@ -129,77 +140,139 @@
     const content = {
       ai: {
         text: `Artificial Intelligence involves creating machines that mimic human cognition. In the future, AI will drive autonomous vehicles, predict diseases, personalize education, and even assist in legal decisions, fundamentally reshaping how we work and live.`,
-        image: "https://cdn.pixabay.com/photo/2020/12/03/12/47/artificial-intelligence-5797035_960_720.jpg"
+        images: ["ai.jpg"]
       },
       cashless: {
         text: `The Future of Money lies in complete digitization—central bank digital currencies (CBDCs), cryptocurrency adoption, biometric payments, and blockchain-based transactions will phase out physical cash, ensuring faster, more secure, and transparent exchanges.`,
-        image: "https://cdn.pixabay.com/photo/2021/06/17/20/27/bitcoin-6340886_960_720.jpg"
+        images: ["cashless.jpg"]
       },
       smartcities: {
         text: `Smart Cities are urban areas that use technology to enhance quality of life. The future includes autonomous public transport, AI-controlled traffic, sensor-based waste management, smart grids, and connected infrastructure to reduce emissions and improve services.`,
-        image: "https://cdn.pixabay.com/photo/2018/06/11/10/06/smart-city-3466151_960_720.jpg"
+        images: ["smartcities.jpg"]
       },
       neural: {
         text: `Neural Networks are brain-inspired systems that learn from data. Future developments will enable ultra-efficient AI, brain-computer interfaces for direct control of machines, and advances in cognitive computing to simulate human emotions.`,
-        image: "https://cdn.pixabay.com/photo/2021/03/01/14/05/artificial-intelligence-6065641_960_720.jpg"
+        images: ["neural.jpg"]
       },
       predictive: {
         text: `Predictive Analytics anticipates outcomes using data. Future tools will be capable of real-time decision-making in healthcare, weather forecasting, business planning, and even predicting global events or personal behavior with high accuracy.`,
-        image: "https://cdn.pixabay.com/photo/2016/11/29/09/18/stock-1863880_960_720.jpg"
+        images: ["predictive.jpg"]
       },
       gene: {
         text: `Gene Editing, using tools like CRISPR, will enable custom disease treatments, inherited disorder correction, and potentially enhancing human capabilities. Ethical frameworks will evolve alongside these breakthroughs.`,
-        image: "https://cdn.pixabay.com/photo/2017/09/04/18/36/dna-2716564_960_720.jpg"
+        images: ["gene.jpg"]
       },
       quantum: {
         text: `Quantum Computing uses quantum physics to perform complex calculations. It will revolutionize cryptography, simulate molecules for drug discovery, and solve problems unsolvable by classical computers.`,
-        image: "https://cdn.pixabay.com/photo/2020/06/23/17/03/quantum-computer-5331613_960_720.jpg"
+        images: [
+          "QC1.jpg.jpg",
+          "QC2.jpg.jpg",
+          "QC3.jpg.jpg",
+          "QC4.jpg.jpg",
+          "QC5.jpg.jpg"
+        ]
       },
       robotics: {
-        text: `Robotics & Automation will lead to machines that can learn and adapt. From household robots and robotic surgeons to fully automated factories, the future will blend AI and robotics seamlessly into daily life.`,
-        image: "https://cdn.pixabay.com/photo/2017/03/12/13/41/robot-2139785_960_720.jpg"
+        text: `Robotics and Automation are reshaping industries by performing tasks with precision and efficiency. Advances in AI, machine learning, and sensor technology are enabling smarter robots for manufacturing, healthcare, logistics, and even home automation.`,
+        images: [
+          "RA1.jpg.jpg",
+          "RA2.jpg.jpg",
+          "RA3.jpg.jpg",
+          "RA4.jpg.jpg"
+        ]
       },
       vr: {
-        text: `Virtual & Augmented Reality will evolve beyond gaming. Future applications include virtual tourism, immersive education, holographic meetings, remote surgery, and augmented workspaces enhancing productivity and training.`,
-        image: "https://cdn.pixabay.com/photo/2019/08/01/21/05/vr-4370291_960_720.jpg"
+        text: `Virtual and Augmented Reality (VR/AR) are transforming how we interact with digital content. The future will bring immersive education, remote collaboration, next-gen entertainment, and augmented experiences seamlessly blending digital and physical worlds.`,
+        images: [
+          "VR1.jpg.jpg",
+          "VR2.jpg.jpg",
+          "VR3.jpg.jpg",
+          "VR4.jpg.jpg",
+          "VR5.jpg.jpg"
+        ]
       },
       blockchain: {
-        text: `Blockchain Technology ensures secure, immutable transactions. It will underpin decentralized finance (DeFi), supply chain tracking, transparent voting systems, and self-sovereign identities in the digital future.`,
-        image: "https://cdn.pixabay.com/photo/2018/01/10/23/47/bitcoin-3072571_960_720.jpg"
+        text: `Blockchain Technology provides decentralized, secure, and transparent transaction systems. The future will see blockchain revolutionizing sectors like finance, supply chain, healthcare, and digital identity, enabling trustless operations and reducing fraud.`,
+        images: [
+          "BT1.jpg.jpg",
+          "BT2.jpg.jpg",
+          "BT3.jpg.jpg",
+          "BT4.jpg.jpg",
+          "BT5.jpg.jpg",
+          "BT6.jpg.jpg"
+        ]
       },
       space: {
-        text: `Space Exploration will extend to Mars colonization, asteroid mining, space tourism, and deep-space telescopes revealing new cosmic phenomena. Private companies and international collaboration will play a key role.`,
-        image: "https://cdn.pixabay.com/photo/2014/11/06/17/39/space-519580_960_720.jpg"
+        text: `Space Exploration drives innovation and expands our understanding of the universe. Advancements in rockets, satellites, and telescopes pave the way for Mars colonization, asteroid mining, and new discoveries about our cosmos.`,
+        images: [
+          "SE1.jpg.jpg",
+          "SE2.jpg.jpg",
+          "SE3.jpg.jpg",
+          "SE4.jpg.jpg"
+        ]
       },
       biotech: {
-        text: `Biotechnology will enable lab-grown organs, climate-resilient crops, smart bio-sensors, and advanced gene therapies. Personalized medicine and synthetic biology will reshape health and industry.`,
-        image: "https://cdn.pixabay.com/photo/2017/09/04/18/36/dna-2716564_960_720.jpg"
+        text: `Biotechnology is driving advancements in healthcare, agriculture, and environmental science. The future holds promise for personalized medicine, sustainable food production, and innovative solutions to global challenges through genetic engineering and synthetic biology.`,
+        images: [
+          "BT1.jpg.jpg",
+          "BT2.jpg.jpg",
+          "BT3.jpg.jpg",
+          "BT4.jpg.jpg",
+          "BT5.jpg.jpg",
+          "BT6.jpg.jpg"
+        ]
       },
       privacy: {
-        text: `Digital Identity & Privacy will rely on decentralized ID systems, zero-knowledge proofs, and AI-driven threat detection to protect users' data amidst a hyper-connected and surveilled world.`,
-        image: "https://cdn.pixabay.com/photo/2021/03/07/09/31/cyber-security-6077454_960_720.jpg"
+        text: `Digital Identity and Privacy are becoming increasingly vital as more personal information moves online. Future developments will focus on secure authentication, decentralized identity systems, and enhanced privacy protections to safeguard user data and maintain trust.`,
+        images: [
+          "DP1.jpg.jpg",
+          "DP2.jpg.jpg",
+          "DP3.jpg.jpg",
+          "DP4.jpg.jpg"
+        ]
       },
       cyber: {
-        text: `Cybersecurity & Ethical Hacking will shift to proactive defense using AI, quantum-proof encryption, threat simulation environments, and ethical AI auditors ensuring system safety and data integrity.`,
-        image: "https://cdn.pixabay.com/photo/2020/04/24/06/49/hacker-5080059_960_720.jpg"
+        text: `Cybersecurity is essential in the digital age to protect systems, networks, and data from cyber threats. Advancements will focus on AI-driven defense, zero-trust models, and proactive strategies to address evolving risks and maintain digital trust.`,
+        images: [
+          "CS1.jpg.jpg",
+          "CS2.jpg.jpg",
+          "CS3.jpg.jpg",
+          "CS4.jpg.jpg",
+          "CS5.jpg.jpg",
+          "CS6.jpg.jpg"
+        ]
       },
       iot: {
-        text: `Internet of Things (IoT) will connect everything—homes, cities, factories, and vehicles. Future IoT ecosystems will be intelligent, self-healing, and context-aware, optimizing energy, healthcare, and logistics.`,
-        image: "https://cdn.pixabay.com/photo/2017/08/10/07/32/smart-home-2617231_960_720.jpg"
+        text: `The Internet of Things (IoT) connects everyday devices to the internet, enabling real-time data collection, automation, and smarter decision-making. Future advances will drive smart homes, cities, healthcare, and industry with improved connectivity and intelligent systems.`,
+        images: [
+          "IOT1.jpg.jpg",
+          "IOT2.jpg.jpg",
+          "IOT3.jpg.jpg",
+          "IOT4.jpg.jpg",
+          "IOT5.jpg.jpg"
+        ]
       }
     };
 
     document.getElementById("topicSelect").addEventListener("change", function() {
       const value = this.value;
       const descBox = document.getElementById("description");
-      const imgBox = document.getElementById("topicImage");
+      const gallery = document.getElementById("gallery");
+      gallery.innerHTML = '';
       if (value && content[value]) {
         descBox.innerText = content[value].text;
-        imgBox.src = content[value].image;
-        imgBox.style.display = 'block';
+        if (content[value].images && content[value].images.length > 0) {
+          content[value].images.forEach(imgSrc => {
+            const img = document.createElement('img');
+            img.src = imgSrc;
+            img.className = "topicImage";
+            img.alt = value + " image";
+            gallery.appendChild(img);
+          });
+        }
       } else {
         descBox.innerText = "";
-        imgBox.style.display = 'none';
+        gallery.innerHTML = '';
       }
     });
 
