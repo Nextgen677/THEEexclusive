@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
     body {
-      background: url('https://wallpapercave.com/wp/wp2757874.gif') no-repeat center center fixed;
+      background: url('AI1.jpg.jpg') no-repeat center center fixed;
       background-size: cover;
       color: #00ffff;
       font-family: 'Share Tech Mono', monospace;
@@ -74,6 +74,9 @@
       border-radius: 10px;
       margin-bottom: 2rem;
     }
+    .form-section label {
+      margin-top: 0.5rem;
+    }
     .form-section input, .form-section button {
       margin: 0.5rem;
       padding: 0.5rem 1rem;
@@ -94,7 +97,9 @@
   <div class="form-section">
     <h2>Future ID Generator</h2>
     <form id="futureForm">
+      <label for="userName">Your Name:</label>
       <input type="text" id="userName" placeholder="Enter your name" required />
+      <label for="explore">What do you want to explore?</label>
       <input type="text" id="explore" placeholder="What do you want to explore?" required />
       <button type="submit">Generate Future ID</button>
     </form>
@@ -141,8 +146,6 @@
       ai: {
         text: `Artificial Intelligence involves creating machines that mimic human cognition. In the future, AI will drive autonomous vehicles, predict diseases, personalize education, and even assist in legal decisions, fundamentally reshaping how we work and live.`,
         images: ["AI2.jpg.jpg"]
-        
-                ]
       },
       cashless: {
         text: `The Future of Money lies in complete digitization—central bank digital currencies (CBDCs), cryptocurrency adoption, biometric payments, and blockchain-based transactions will phase out physical cash, ensuring faster, more secure, and transparent exchanges.`,
@@ -158,7 +161,7 @@
       },
       predictive: {
         text: `Predictive Analytics anticipates outcomes using data. Future tools will be capable of real-time decision-making in healthcare, weather forecasting, business planning, and even predicting global events or personal behavior with high accuracy.`,
-        image["PA1.jpg.jpg"]
+        images: ["PA1.jpg.jpg"]
       },
       gene: {
         text: `Gene Editing, using tools like CRISPR, will enable custom disease treatments, inherited disorder correction, and potentially enhancing human capabilities. Ethical frameworks will evolve alongside these breakthroughs.`,
@@ -269,6 +272,7 @@
             img.src = imgSrc;
             img.className = "topicImage";
             img.alt = value + " image";
+            img.onerror = function() { this.style.display = 'none'; };
             gallery.appendChild(img);
           });
         }
@@ -296,4 +300,5 @@
   </script>
 </body>
 </html>
+
 
